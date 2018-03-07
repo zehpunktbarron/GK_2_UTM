@@ -61,7 +61,14 @@ try:
 				outFile.write(line)
 	
 	print "Transformation abgeschlossen"
-	
+	outFile.write("\n")
+	# Liste aller MXDs anfertigen
+	print "Starte Auflistung aller MXDs"
+	for (path, dirs, files) in os.walk(input_dir):
+		for mxd in files:
+			if mxd.endswith(".mxd"):
+				line = str(path + "\\" + mxd) + "\n" 
+				outFile.write(line)
 	# Textdokument schließen
 	outFile.close()
 	
